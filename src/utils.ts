@@ -262,3 +262,74 @@ export function groupLabel(date: string, now: Date) {
   if (date < today) return `Overdue · ${formatPrettyDate(date)}`
   return formatPrettyDate(date)
 }
+
+/* ---------- alert stages ---------- */
+
+export type AlertStage = '24h' | 'day' | '1h' | 'due'
+
+/** Least to most urgent. A task reaching a later stage supersedes the earlier ones. */
+export const ALERT_STAGES: AlertStage[] = ['24h', 'day', '1h', 'due']
+
+/** How long after the due time a "due now" alert may still fire, for a window that was asleep. */
+export const DUE_GRACE = 15 * MIN
+
+export type ScheduledAlert = { key: string; stage: AlertStage; at: number; title: string; body: string }
+
+export function alertStageKey(task: { id: string; date: string; time: string }, stage: AlertStage) {
+  return `${alertKey(task)}|${stage}`
+}
+
+export function stageQualifies(stage: AlertStage, due: Date, now: Date) {
+  const diff = due.getTime() - now.getTime()
+  switch (stage) {
+    case '24h':
+      return diff > 0 && diff <= DAY
+    case 'day':
+      return diff > 0 && sameDay(due, now)
+    case '1h':
+      return diff > 0 && diff <= HOUR
+    case 'due':
+      return diff <= 0 && diff > -DUE_GRACE
+  }
+}
+
+/** The most urgent stage the task has reached, or null when nothing is pending. */
+export function currentAlertStage(task: Pick<Task, 'date' | 'time'>, now: Date): AlertStage | null {
+  const due = taskDue(task)
+  let found: AlertStage | null = null
+  for (const stage of ALERT_STAGES) if (stageQualifies(stage, due, now)) found = stage
+  return found
+}
+
+export function alertHeadline(task: Pick<Task, 'title' | 'time'>, stage: AlertStage) {
+  const time = formatTaskTime(task.time)
+  switch (stage) {
+    case '24h':
+      return `${task.title} is due within 24 hours`
+    case 'day':
+      return `${task.title} is today at ${time}`
+    case '1h':
+      return `${task.title} is due within the hour`
+    case 'due':
+      return `${task.title} is due now`
+  }
+}
+
+export function alertBody(task: Pick<Task, 'date' | 'time'>) {
+  return `${formatPrettyDate(task.date)} · ${formatTaskTime(task.time)}`
+}
+
+/** True when this stage, or one that supersedes it, was already delivered. Keys saved before stages existed count as the 24-hour stage. */
+export function stageWasSent(sent: string[], task: Pick<Task, 'id' | 'date' | 'time'>, stage: AlertStage) {
+  if (sent.includes(alertStageKey(task, stage))) return true
+  return stage === '24h' && sent.includes(alertKey(task))
+}
+
+/** Every moment this task should alert, for the local alert agent that runs while the window is closed. */
+export function alertSchedule(task: Pick<Task, 'id' | 'title' | 'date' | 'time'>): ScheduledAlert[] {
+  const due = taskDue(task).getTime()
+  const dayStart = taskDue({ date: task.date, time: '00:00' }).getTime()
+  const at: Record<AlertStage, number> = { '24h': due - DAY, day: dayStart, '1h': due - HOUR, due }
+  const body = alertBody(task)
+  return ALERT_STAGES.map((stage) => ({ key: alertStageKey(task, stage), stage, at: at[stage], title: alertHeadline(task, stage), body }))
+}

@@ -19,7 +19,7 @@ if not exist dist (
 )
 netstat -ano | findstr ":5173" | findstr "LISTENING" >nul
 if errorlevel 1 (
-  start "To-Dey" /min cmd /c "npm run preview"
+  start "To-Dey" /min cmd /c "npm start"
   ping -n 4 127.0.0.1 >nul
 )
 set "EDGE=%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe"

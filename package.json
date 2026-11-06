@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview --port 5173 --strictPort"
+    "preview": "vite preview --port 5173 --strictPort",
+    "start": "node server/todey-server.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

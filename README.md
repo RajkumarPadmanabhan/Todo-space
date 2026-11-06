@@ -18,7 +18,8 @@ That shortcut builds the app once, then opens it in its own window. Use that sam
 
 - A week, today, and month calendar with a live clock.
 - Notes that show how many days and hours are left.
-- Alerts inside the app, and on the desktop, when a note is due within 24 hours.
+- Alerts inside the app, and on the desktop: a day before a note is due, on the day, an hour before, and at the due time.
+- Opened from the desktop shortcut, the alerts keep coming after the window is closed. A small local server (`npm start`) holds the schedule and shows Windows notifications itself.
 - Folders you create, plus a folder for each month (Upcoming, Past, Deleted).
 - An inbox for profiles saved on this computer.
 - A wallpaper with blur, saturation, brightness, and dim.

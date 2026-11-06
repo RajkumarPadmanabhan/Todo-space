@@ -23,7 +23,7 @@ export function AboutPage() {
         <ul>
           <li>Add a note to a day. Under it, To-Dey counts the days and hours left until that time.</li>
           <li>See the week, today, or the month, with the clock moving as time passes.</li>
-          <li>Get an alert inside the app, and on the desktop, when a note is due within 24 hours.</li>
+          <li>Get alerts inside the app, and on the desktop: a day before a note is due, on the day, an hour before, and at the due time. Opened from the desktop shortcut, To-Dey keeps sending them even after the window is closed.</li>
           <li>Make a folder and put notes in it. Each month also files notes into Upcoming, Past, and Deleted.</li>
           <li>Message other profiles that are saved on this same computer.</li>
           <li>Put a photo behind the app and adjust blur, color, brightness, and dim.</li>

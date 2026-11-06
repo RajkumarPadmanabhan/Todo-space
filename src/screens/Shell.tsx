@@ -9,6 +9,7 @@ import { ThemeToggle } from '../components/ThemeToggle'
 import type { Page, Task, TaskDraft } from '../types'
 import { useStore } from '../store'
 import { useAlerts } from '../useAlerts'
+import { useAlertSync } from '../useAlertSync'
 import { compareTasks, cx, dateKey, defaultTime, isWithin24h, taskDue } from '../utils'
 import { AboutPage } from './AboutPage'
 import { AlertsPage } from './AlertsPage'
@@ -39,7 +40,7 @@ const TOUR: TourStep[] = [
   { page: 'folders', target: 'tour-folders', title: 'Folders', body: 'Make your own folder and put notes in it. Each month also files notes into Upcoming, Past, and Deleted.' },
   { page: 'vault', target: 'tour-vault', title: 'Vault', body: 'A private place for notes and documents. It opens with its own 4 to 8 digit PIN, not the app password.' },
   { page: 'inbox', target: 'tour-inbox', title: 'Inbox', body: 'Messages between profiles saved on this computer.' },
-  { page: 'alerts', target: 'tour-alerts', title: 'Alerts', body: 'Notes due within 24 hours. After you allow it, the same alert can appear on the desktop.' },
+  { page: 'alerts', target: 'tour-alerts', title: 'Alerts', body: 'Notes due within 24 hours. Each note alerts a day before, on the day, an hour before, and when it is due. After you allow it, the same alerts reach the desktop.' },
   { page: null, target: 'tour-bell', title: 'Bell', body: 'A short list of those 24-hour notes, without leaving the page you are on.' },
   { page: null, target: 'tour-search', title: 'Search', body: 'Finds a note by what you typed. On Inbox, it searches messages instead.' },
   { page: null, target: 'tour-profile', title: 'Profile', body: 'Your photo, position, and company. Open it to change them, set passwords, pick a wallpaper, or save a backup.' },
@@ -87,8 +88,11 @@ export function Shell({ now }: { now: Date }) {
     .sort(compareTasks)
   const unread = user ? messages.filter((message) => message.toId === user.id && !message.read).length : 0
 
+  const alertsReady = useAlertSync({ userId: user?.id ?? null, tasks, sentToasts, sentDesktop, markToastSent, markDesktopSent })
+
   useAlerts({
     userId: user?.id ?? null,
+    enabled: alertsReady,
     tasks,
     sentToasts,
     sentDesktop,

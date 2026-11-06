@@ -12,7 +12,7 @@ export function AlertsPage({
 }) {
   return (
     <section className="panel alerts-panel">
-      <p className="muted alerts-intro">These notes are due within 24 hours. To-Dey also sends each one to your desktop when alerts are on.</p>
+      <p className="muted alerts-intro">These notes are due within 24 hours. Each one alerts a day before, on the day, an hour before, and when it is due. The same alerts reach your desktop when alerts are on.</p>
       <AlertList tasks={tasks} now={now} onEdit={onEdit} />
     </section>
   )
