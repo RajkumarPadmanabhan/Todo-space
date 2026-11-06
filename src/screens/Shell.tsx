@@ -5,6 +5,7 @@ import { DesktopBanner } from '../components/DesktopBanner'
 import { IconBell, IconChat, IconCheck, IconFolder, IconGrid, IconInfo, IconLock, IconOut, IconSearch, IconUser } from '../components/Icons'
 import { Walkthrough, type TourStep } from '../components/Walkthrough'
 import { TaskModal } from '../components/TaskModal'
+import { ThemeToggle } from '../components/ThemeToggle'
 import type { Page, Task, TaskDraft } from '../types'
 import { useStore } from '../store'
 import { useAlerts } from '../useAlerts'
@@ -144,8 +145,8 @@ export function Shell({ now }: { now: Date }) {
     <div className="app">
       <aside className="sidebar">
         <button type="button" className="brand" onClick={() => setPage('dashboard')}>
-          <span className="brand-mark">Td</span>
-          <span className="brand-name">To-Dey</span>
+          <span className="brand-mark">To-Dey</span>
+          <span className="brand-name">v1</span>
         </button>
         <div className="nav-label">General</div>
         <nav className="nav">
@@ -195,6 +196,7 @@ export function Shell({ now }: { now: Date }) {
             />
           </label>
           <div className="top-actions">
+            <ThemeToggle />
             <div className="bell-wrap" ref={bellRef} data-tour="tour-bell">
               <button
                 type="button"
@@ -239,7 +241,15 @@ export function Shell({ now }: { now: Date }) {
         <DesktopBanner onGranted={() => setAlertTick((value) => value + 1)} />
         {page !== 'inbox' && (
           <div className="page-head">
-            <h1 className="greeting">{page === 'dashboard' ? `Stay up to date, ${user.name}` : TITLES[page]}</h1>
+            <h1 className="greeting">
+              {page === 'dashboard' ? (
+                <>
+                  Stay <em>up to date,</em> {user.name}
+                </>
+              ) : (
+                TITLES[page]
+              )}
+            </h1>
             {(page === 'dashboard' || page === 'todos') && (
               <button type="button" className="add-btn" data-tour="tour-add" onClick={() => openCreate()}>
                 Add task

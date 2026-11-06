@@ -81,7 +81,9 @@ export function Todos({
                       {formatPrettyDate(task.date)} · {formatTaskTime(task.time)}
                       <FolderMark folderId={task.folderId} />
                     </div>
-                    <h3>{task.title}</h3>
+                    <h3>
+                      <span className="title-mark">{task.title}</span>
+                    </h3>
                     {task.note && <p className="note">{task.note}</p>}
                     <p className="count-line">{taskCountdown(task, now)}</p>
                   </div>

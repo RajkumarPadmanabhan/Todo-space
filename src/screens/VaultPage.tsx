@@ -217,7 +217,9 @@ export function VaultPage({
                     <div className="todo-kicker">
                       {formatPrettyDate(task.date)} · {formatTaskTime(task.time)}
                     </div>
-                    <h3>{task.title}</h3>
+                    <h3>
+                <span className="title-mark">{task.title}</span>
+              </h3>
                     {task.note && <p className="note">{task.note}</p>}
                     <p className="count-line">{taskCountdown(task, now)}</p>
                   </div>
@@ -241,7 +243,9 @@ export function VaultPage({
             <article key={task.id} className="todo-row is-done">
               <div className="todo-top">
                 <div>
-                  <h3>{task.title}</h3>
+                  <h3>
+                <span className="title-mark">{task.title}</span>
+              </h3>
                   <p className="count-line">Deleted</p>
                 </div>
                 <button type="button" className="linkish" onClick={() => restoreTask(task.id)}>

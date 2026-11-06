@@ -2,6 +2,7 @@ import { useRef, useState, type FormEvent } from 'react'
 import { Avatar } from '../components/Avatar'
 import { BackupControls } from '../components/BackupControls'
 import { CropModal } from '../components/CropModal'
+import { ThemeToggle } from '../components/ThemeToggle'
 import { useStore } from '../store'
 
 export function AuthScreen() {
@@ -49,6 +50,7 @@ export function AuthScreen() {
   return (
     <div className="auth">
       <div className="auth-card">
+        <ThemeToggle className="auth-theme" />
         <aside className="auth-aside">
           <div className="auth-motion" aria-hidden="true">
             <span className="auth-orb auth-orb-amber" />
@@ -57,8 +59,8 @@ export function AuthScreen() {
             <span className="auth-ring" />
           </div>
           <div className="brand">
-            <span className="brand-mark">Td</span>
-            <span className="brand-name">To-Dey</span>
+            <span className="brand-mark">To-Dey</span>
+            <span className="brand-name">Notes that count down</span>
           </div>
         </aside>
         <form className="auth-form" onSubmit={(event) => void onSubmit(event)}>

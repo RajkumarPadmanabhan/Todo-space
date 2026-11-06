@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { Avatar } from '../components/Avatar'
+import { ThemeToggle } from '../components/ThemeToggle'
 import { useStore } from '../store'
 
 export function AppLock({ mode, onUnlocked, onSkip }: { mode: 'unlock' | 'create'; onUnlocked: () => void; onSkip?: () => void }) {
@@ -46,6 +47,7 @@ export function AppLock({ mode, onUnlocked, onSkip }: { mode: 'unlock' | 'create
   return (
     <div className="auth">
       <form className="lock-card" onSubmit={(event) => void submit(event)}>
+        <ThemeToggle className="auth-theme" />
         <Avatar src={user.avatar} name={user.name} size={84} />
         <h1>{mode === 'unlock' ? 'Welcome back' : 'Create an app password'}</h1>
         <p className="muted">

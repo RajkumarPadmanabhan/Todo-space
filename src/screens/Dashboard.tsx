@@ -107,6 +107,7 @@ export function Dashboard({ tasks, now, search, onEdit, onToggle, onCreate }: Pr
                     <div className="day-chip">
                       <span className="day-name">{WEEKDAYS[index]}</span>
                       <span className="day-num">{day.getDate()}</span>
+                      {today && <span className="day-today-tag">today</span>}
                     </div>
                     <button type="button" className="day-add" aria-label={`Add task on ${formatPrettyDate(key)}`} onClick={() => onCreate(key)}>
                       +
@@ -214,7 +215,9 @@ function TodayView({
           {upcoming.map((task) => (
             <li key={task.id}>
               <button type="button" className={cx('coming-item', `tcard-${task.color}`)} onClick={() => onEdit(task)}>
-                <strong>{task.title}</strong>
+                <strong>
+                  <span className="title-mark">{task.title}</span>
+                </strong>
                 <span className="muted">
                   {formatPrettyDate(task.date)} · {formatTaskTime(task.time)}
                 </span>

@@ -21,7 +21,9 @@ export function TaskCard({ task, now, onEdit, onToggle }: Props) {
         </span>
         {soon && <span className="pill-24">within 24 hrs</span>}
       </header>
-      <h3>{task.title}</h3>
+      <h3>
+        <span className="title-mark">{task.title}</span>
+      </h3>
       {task.note && <p className="note">{task.note}</p>}
       <p className="count-line">{taskCountdown(task, now)}</p>
       <div className="tcard-actions">
