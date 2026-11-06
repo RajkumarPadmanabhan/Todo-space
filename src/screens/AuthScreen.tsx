@@ -50,6 +50,12 @@ export function AuthScreen() {
     <div className="auth">
       <div className="auth-card">
         <aside className="auth-aside">
+          <div className="auth-motion" aria-hidden="true">
+            <span className="auth-orb auth-orb-amber" />
+            <span className="auth-orb auth-orb-teal" />
+            <span className="auth-orb auth-orb-cream" />
+            <span className="auth-ring" />
+          </div>
           <div className="brand">
             <span className="brand-mark">Td</span>
             <span className="brand-name">To-Dey</span>

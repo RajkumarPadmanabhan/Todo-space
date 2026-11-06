@@ -1,6 +1,14 @@
 :root {
-  color: #1c1917;
-  background: #e6dfd2;
+  --ink: #1a3344;
+  --sea: #14635c;
+  --sea-mid: #1d7a72;
+  --amber: #f0c56a;
+  --coral: #e07a5f;
+  --paper: #e7efe9;
+  --paper-2: #f6f1e7;
+  --card: #fff8ef;
+  color: var(--ink);
+  background: var(--paper);
   font-family: Outfit, "Segoe UI", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,7 +29,7 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid #161616;
+  outline: 2px solid var(--sea);
   outline-offset: 2px;
 }
 
@@ -29,15 +37,16 @@ select:focus-visible {
   height: 100%;
   padding: 14px;
   background:
-    radial-gradient(900px 400px at 10% 0%, rgba(255, 255, 255, 0.45), transparent 50%),
-    #e6dfd2;
+    radial-gradient(900px 400px at 8% 0%, rgba(224, 122, 95, 0.18), transparent 46%),
+    radial-gradient(700px 420px at 100% 100%, rgba(20, 99, 92, 0.16), transparent 50%),
+    var(--paper);
 }
 
 .app, .auth { height: 100%; }
 
 .app {
   display: flex;
-  background: #f4efe6;
+  background: var(--paper-2);
   border-radius: 28px;
   overflow: hidden;
   box-shadow: 0 24px 70px rgba(70, 50, 20, 0.12);
@@ -47,8 +56,10 @@ select:focus-visible {
   width: 240px;
   flex: none;
   margin: 12px;
-  background: #161616;
-  color: white;
+  background:
+    radial-gradient(140px 90px at 18% 8%, rgba(240, 197, 106, 0.45), transparent 70%),
+    linear-gradient(180deg, #1d7a72 0%, #0e3f3c 100%);
+  color: #f7f3ea;
   border-radius: 24px;
   display: flex;
   flex-direction: column;
@@ -72,7 +83,7 @@ select:focus-visible {
   height: 34px;
   border-radius: 11px;
   background: #f6e7a4;
-  color: #161616;
+  color: var(--sea);
   display: grid;
   place-items: center;
   font-weight: 800;
@@ -101,17 +112,17 @@ select:focus-visible {
   text-align: left;
   border: 0;
   background: transparent;
-  color: #d7d7d7;
+  color: #e7f3f0;
   border-radius: 12px;
   padding: 10px 12px;
   font-weight: 500;
 }
-.nav-btn.active { background: #2a2a2a; color: white; }
-.nav-btn:hover { background: #242424; }
+.nav-btn.active { background: rgba(255, 248, 239, 0.18); color: white; }
+.nav-btn:hover { background: rgba(255, 248, 239, 0.1); }
 .nav-badge {
   margin-left: auto;
   background: #f6e7a4;
-  color: #161616;
+  color: var(--sea);
   border-radius: 999px;
   min-width: 20px;
   height: 20px;
@@ -144,7 +155,7 @@ select:focus-visible {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: white;
+  background: var(--card);
   border-radius: 999px;
   padding: 10px 16px;
   color: #8a847c;
@@ -156,7 +167,7 @@ select:focus-visible {
   width: 100%;
   outline: none;
 }
-.search:focus-within { outline: 2px solid #161616; outline-offset: 2px; }
+.search:focus-within { outline: 2px solid var(--sea); outline-offset: 2px; }
 .top-actions {
   flex: none;
   display: flex;
@@ -168,12 +179,12 @@ select:focus-visible {
   height: 42px;
   border-radius: 50%;
   border: 0;
-  background: white;
+  background: var(--card);
   display: grid;
   place-items: center;
   padding: 0;
   position: relative;
-  color: #161616;
+  color: var(--sea);
 }
 .avatar-btn { background: transparent; }
 .icon-btn .dot {
@@ -236,13 +247,13 @@ select:focus-visible {
   font-weight: 650;
 }
 .add-btn {
-  background: #161616;
+  background: var(--sea);
   color: white;
   padding: 12px 18px;
 }
 .add-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .add-btn.wide { width: 100%; margin-top: 6px; }
-.light-btn { background: #f6e7a4; color: #161616; padding: 8px 14px; }
+.light-btn { background: #f6e7a4; color: var(--sea); padding: 8px 14px; }
 .ghost-btn { background: transparent; color: white; padding: 8px 10px; }
 .text-btn { background: transparent; color: #3f3a34; padding: 8px 4px; font-weight: 600; }
 .text-btn.strong { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
@@ -256,7 +267,7 @@ select:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  background: #161616;
+  background: var(--sea);
   color: white;
   border-radius: 16px;
   padding: 12px 14px;
@@ -299,14 +310,14 @@ select:focus-visible {
   height: 34px;
   border-radius: 50%;
   border: 0;
-  background: white;
+  background: var(--card);
   font-size: 22px;
   line-height: 1;
 }
 .view-switch {
   display: flex;
   flex-wrap: wrap;
-  background: #e8e1d6;
+  background: #d7ebe4;
   border-radius: 999px;
   padding: 4px;
   gap: 2px;
@@ -319,7 +330,7 @@ select:focus-visible {
   font-weight: 650;
   color: #5c574f;
 }
-.view-switch button.active { background: #161616; color: white; }
+.view-switch button.active { background: var(--sea); color: white; }
 
 .week-scroll { overflow-x: auto; padding-bottom: 8px; }
 .week-grid {
@@ -350,7 +361,7 @@ select:focus-visible {
   padding: 8px 10px 10px;
   border-radius: 18px;
 }
-.day-head.today .day-chip { background: #161616; color: white; }
+.day-head.today .day-chip { background: var(--sea); color: white; }
 .day-name {
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -368,7 +379,7 @@ select:focus-visible {
   color: #8a847c;
   font-size: 18px;
 }
-.day-col:hover .day-add, .day-add:focus-visible { background: white; color: #161616; }
+.day-col:hover .day-add, .day-add:focus-visible { background: var(--card); color: var(--sea); }
 .day-empty { color: #b0aaa2; font-size: 13px; padding: 8px 6px; }
 .day-body, .stack { display: flex; flex-direction: column; gap: 8px; }
 
@@ -376,7 +387,7 @@ select:focus-visible {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #161616;
+  color: var(--sea);
   font-size: 11px;
   font-weight: 700;
   margin: 2px 0;
@@ -384,7 +395,7 @@ select:focus-visible {
 .now-line::after {
   content: "";
   height: 0;
-  border-top: 1.5px dashed #161616;
+  border-top: 1.5px dashed var(--sea);
   flex: 1;
   opacity: 0.75;
 }
@@ -428,7 +439,7 @@ select:focus-visible {
 .pill-24 {
   display: inline-flex;
   align-items: center;
-  background: #161616;
+  background: var(--sea);
   color: white;
   border-radius: 999px;
   padding: 3px 8px;
@@ -480,7 +491,7 @@ select:focus-visible {
   color: inherit;
 }
 .month-cell.out { opacity: 0.42; }
-.month-cell.selected { outline: 2px solid #161616; }
+.month-cell.selected { outline: 2px solid var(--sea); }
 .mnum {
   width: 26px;
   height: 26px;
@@ -490,7 +501,7 @@ select:focus-visible {
   font-weight: 700;
   font-size: 13px;
 }
-.month-cell.today .mnum { background: #161616; color: white; }
+.month-cell.today .mnum { background: var(--sea); color: white; }
 .chip {
   display: block;
   margin-top: 4px;
@@ -508,13 +519,13 @@ select:focus-visible {
 .filters { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
 .filters button {
   border: 0;
-  background: white;
+  background: var(--card);
   border-radius: 999px;
   padding: 8px 12px;
   font-weight: 650;
   color: #5c574f;
 }
-.filters button.active { background: #161616; color: white; }
+.filters button.active { background: var(--sea); color: white; }
 .group-label { margin: 16px 0 8px; }
 .todo-row { margin-bottom: 10px; }
 .todo-copy { flex: 1; min-width: 0; }
@@ -528,14 +539,14 @@ select:focus-visible {
   background: transparent;
   flex: none;
 }
-.check.on { background: #161616; box-shadow: inset 0 0 0 4px #f6e7a4; }
+.check.on { background: var(--sea); box-shadow: inset 0 0 0 4px #f6e7a4; }
 
 .alert-list { display: flex; flex-direction: column; gap: 8px; }
 .alert-item {
   width: 100%;
   text-align: left;
   border: 0;
-  background: white;
+  background: var(--card);
   border-radius: 16px;
   padding: 12px 14px;
   display: flex;
@@ -553,7 +564,7 @@ select:focus-visible {
     radial-gradient(ellipse at 18% 8%, rgba(255, 255, 255, 0.55), transparent 42%),
     radial-gradient(ellipse at 80% 86%, rgba(90, 110, 130, 0.45), transparent 46%),
     radial-gradient(ellipse at 62% 28%, rgba(255, 214, 170, 0.38), transparent 36%),
-    linear-gradient(165deg, #cfc8bc 0%, #b7bec7 52%, #8f98a4 100%);
+    linear-gradient(165deg, #d7ebe4 0%, #8ec9c2 52%, #3d8f98 100%);
   display: grid;
   place-items: center;
   padding: 22px 16px;
@@ -562,7 +573,7 @@ select:focus-visible {
   width: min(460px, 100%);
   max-height: 100%;
   overflow: auto;
-  background: rgba(36, 38, 52, 0.78);
+  background: rgba(14, 63, 70, 0.82);
   backdrop-filter: blur(18px);
   border-radius: 28px;
   padding: 20px 16px 16px;
@@ -587,7 +598,7 @@ select:focus-visible {
   border-radius: 12px;
   padding: 10px 12px;
   background: rgba(255, 255, 255, 0.94);
-  color: #161616;
+  color: var(--sea);
   margin-top: 8px;
 }
 .activity-card {
@@ -610,7 +621,7 @@ select:focus-visible {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.send-btn { margin-top: 8px; background: white; color: #161616; padding: 8px 14px; }
+.send-btn { margin-top: 8px; background: var(--card); color: var(--sea); padding: 8px 14px; }
 .activity-empty { color: rgba(255, 255, 255, 0.7); padding: 8px; }
 .reply-box { margin-top: 8px; }
 
@@ -621,7 +632,7 @@ select:focus-visible {
   place-items: center;
   flex: none;
 }
-.avatar-fallback { background: #f6e7a4; color: #161616; font-weight: 800; }
+.avatar-fallback { background: #f6e7a4; color: var(--sea); font-weight: 800; }
 
 .profile-grid { display: grid; grid-template-columns: 240px 1fr; gap: 16px; align-items: start; }
 .profile-card, .profile-form {
@@ -639,25 +650,104 @@ select:focus-visible {
   width: min(980px, 100%);
   display: grid;
   grid-template-columns: 0.72fr 1.28fr;
-  background: #f6f1ea;
+  background: var(--paper-2);
   border-radius: 28px;
   overflow: auto;
   box-shadow: 0 30px 80px rgba(60, 40, 20, 0.12);
 }
 .auth-aside {
-  background: #161616;
-  color: white;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(165deg, #0e3f3c 0%, #14635c 42%, #1a4d62 100%);
+  color: #f7f3ea;
   padding: 32px 28px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 420px;
 }
-.auth-aside .brand { padding-bottom: 0; }
+.auth-motion {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 0;
+}
+.auth-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(8px);
+  mix-blend-mode: screen;
+}
+.auth-orb-amber {
+  width: 260px;
+  height: 260px;
+  left: 18%;
+  top: 28%;
+  background: var(--amber);
+  opacity: 0.9;
+  animation: auth-pass-a 7s ease-in-out infinite;
+}
+.auth-orb-teal {
+  width: 230px;
+  height: 230px;
+  left: 28%;
+  top: 34%;
+  background: #7ee0d2;
+  opacity: 0.85;
+  animation: auth-pass-b 9s ease-in-out infinite;
+}
+.auth-orb-cream {
+  width: 170px;
+  height: 170px;
+  left: 36%;
+  top: 38%;
+  background: var(--coral);
+  opacity: 0.8;
+  animation: auth-pass-c 6s ease-in-out infinite;
+}
+.auth-ring {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  left: 50%;
+  top: 50%;
+  margin: -160px 0 0 -160px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 248, 239, 0.55);
+  animation: auth-spin 18s linear infinite;
+}
+.auth-aside .brand {
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0;
+  background: none;
+}
+.auth-aside .brand-name {
+  text-shadow: 0 2px 18px rgba(8, 32, 34, 0.45);
+}
+@keyframes auth-pass-a {
+  0%, 100% { transform: translate(-90px, 36px) scale(0.85); }
+  50% { transform: translate(110px, -48px) scale(1.15); }
+}
+@keyframes auth-pass-b {
+  0%, 100% { transform: translate(100px, -20px) scale(1.05); }
+  50% { transform: translate(-120px, 54px) scale(0.8); }
+}
+@keyframes auth-pass-c {
+  0%, 100% { transform: translate(10px, 70px); }
+  50% { transform: translate(-20px, -80px); }
+}
+@keyframes auth-spin {
+  to { transform: rotate(360deg); }
+}
 .auth-form { padding: 32px 32px 28px; display: flex; flex-direction: column; gap: 4px; }
 .tabs {
   display: flex;
   gap: 4px;
-  background: #e7e0d4;
+  background: #d7ebe4;
   padding: 4px;
   border-radius: 999px;
   margin-bottom: 16px;
@@ -670,17 +760,17 @@ select:focus-visible {
   padding: 10px;
   font-weight: 650;
 }
-.tabs button.active { background: #161616; color: white; }
+.tabs button.active { background: var(--sea); color: white; }
 
 .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; font-size: 13px; color: #5c574f; font-weight: 650; }
 .field input, .field textarea, .modal input, .modal textarea, .modal select, .profile-form input {
   width: 100%;
-  background: white;
+  background: var(--card);
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 14px;
   padding: 12px 14px;
   font-weight: 500;
-  color: #1c1917;
+  color: var(--ink);
 }
 .password-row { display: flex; align-items: center; gap: 8px; }
 .password-row input { flex: 1; }
@@ -724,7 +814,7 @@ select:focus-visible {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   padding: 0;
 }
-.swatch.active { box-shadow: 0 0 0 2px #161616; }
+.swatch.active { box-shadow: 0 0 0 2px var(--sea); }
 .modal-actions { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-top: 8px; }
 .check-row { display: flex; align-items: center; gap: 8px; font-weight: 650; margin-bottom: 8px; }
 .danger { background: transparent; color: #9d2c2c; border: 0; font-weight: 700; padding: 8px 0; }
@@ -766,7 +856,7 @@ select:focus-visible {
   max-width: calc(100vw - 32px);
 }
 .toast {
-  background: #161616;
+  background: var(--sea);
   color: white;
   border: 0;
   border-radius: 16px;
@@ -792,11 +882,11 @@ select:focus-visible {
   .today-layout, .profile-grid, .auth-card { grid-template-columns: 1fr; }
   .search { max-width: none; }
   .desk-banner { flex-direction: column; align-items: flex-start; }
-  .auth-aside { min-height: 0; padding: 22px 18px; }
+  .auth-aside { min-height: 168px; padding: 22px 18px; }
   .auth-form { padding: 22px 18px 18px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .live-dot, .tcard { animation: none; transition: none; }
+  .live-dot, .tcard, .auth-orb, .auth-ring { animation: none; transition: none; }
 }
 
 .app-frame { position: relative; overflow: hidden; }
@@ -812,7 +902,7 @@ select:focus-visible {
   background-size: cover;
   z-index: 0;
 }
-.wallpaper-dim { background: #1c1917; z-index: 0; }
+.wallpaper-dim { background: var(--ink); z-index: 0; }
 .app, .auth { position: relative; z-index: 1; }
 .app-frame.has-wallpaper .app { background: transparent; }
 .app-frame.has-wallpaper .main {
@@ -825,7 +915,7 @@ select:focus-visible {
   font-size: 22px;
   letter-spacing: -0.03em;
   text-transform: none;
-  color: #1c1917;
+  color: var(--ink);
   margin: 0;
 }
 .detail-lead { margin-top: 8px; max-width: 560px; }
@@ -843,17 +933,17 @@ select:focus-visible {
 .wallpaper-preview span {
   position: absolute;
   inset: 0;
-  background: #1c1917;
+  background: var(--ink);
 }
 .wallpaper-preview em { position: relative; font-style: normal; font-weight: 650; }
 .wallpaper-controls { display: flex; flex-direction: column; gap: 8px; }
 .slider-field { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 650; color: #5c574f; }
 .slider-field span { display: flex; justify-content: space-between; }
-.slider-field strong { color: #1c1917; }
-.slider-field input[type='range'] { width: 100%; accent-color: #161616; }
+.slider-field strong { color: var(--ink); }
+.slider-field input[type='range'] { width: 100%; accent-color: var(--sea); }
 .backup-controls { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 12px; }
 .confirm-box {
-  background: white;
+  background: var(--card);
   border-radius: 14px;
   padding: 12px;
   display: flex;
@@ -879,12 +969,12 @@ select:focus-visible {
   gap: 8px;
   font-weight: 650;
 }
-.folder-link.active { outline: 2px solid #161616; }
+.folder-link.active { outline: 2px solid var(--sea); }
 .auto-tag {
   font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: #161616;
+  background: var(--sea);
   color: white;
   border-radius: 999px;
   padding: 3px 7px;
@@ -895,7 +985,7 @@ select:focus-visible {
   flex: 1;
   min-width: 140px;
   border: 0;
-  background: white;
+  background: var(--card);
   border-radius: 12px;
   padding: 10px 12px;
 }
@@ -932,7 +1022,7 @@ select:focus-visible {
   width: 100%;
   text-align: left;
   border: 0;
-  background: #222;
+  background: rgba(255, 248, 239, 0.12);
   color: white;
   border-radius: 16px;
   padding: 10px;
@@ -956,7 +1046,7 @@ select:focus-visible {
 .preview-company { color: #5c574f; }
 .lock-card {
   width: min(440px, 100%);
-  background: #f6f1ea;
+  background: var(--paper-2);
   border-radius: 28px;
   padding: 32px 28px;
   display: flex;
@@ -967,13 +1057,13 @@ select:focus-visible {
 }
 .lock-card h1 { font-size: 32px; letter-spacing: -0.04em; }
 .security-grid, .vault-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
-.security-panel h3, .vault-layout h2, .panel h2.detail-title { text-transform: none; letter-spacing: -0.03em; color: #1c1917; font-size: 20px; }
+.security-panel h3, .vault-layout h2, .panel h2.detail-title { text-transform: none; letter-spacing: -0.03em; color: var(--ink); font-size: 20px; }
 .security-panel h3 { margin-bottom: 4px; }
 .vault-gate { max-width: 460px; }
 .panel input, .panel textarea, .panel select, .vault-gate input {
   width: 100%;
   border: 0;
-  background: white;
+  background: var(--card);
   border-radius: 12px;
   padding: 10px 12px;
 }
@@ -1015,7 +1105,7 @@ select:focus-visible {
   z-index: 82;
   width: min(320px, calc(100vw - 24px));
   background: #fffdf8;
-  color: #1c1917;
+  color: var(--ink);
   border-radius: 18px;
   padding: 16px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);

@@ -2,16 +2,17 @@
 
 To-Dey 1.0.0 is a todo app for your own computer. Notes, messages, the vault, and passwords stay in this browser. Nothing is uploaded.
 
-## Run it
+## Install it on Windows
 
-Double-click `Start To-Dey.bat`, or from this folder:
+To-Dey is an app for this computer. It does not have an internet account, so the window talks to a small program on your PC. That is why it is not a public website. Your notes stay in the To-Dey window on this machine.
 
-```bash
-npm install
-npm run dev
-```
+1. Install Node.js from https://nodejs.org if it is not already installed.
+2. Double-click `Install To-Dey.bat` in this folder.
+3. Open **To-Dey** from the desktop or the Start menu.
 
-Then open http://localhost:5173/
+That shortcut builds the app once, then opens it in its own window. Use that same icon each time so your notes, vault, and passwords are still there.
+
+`Start To-Dey.bat` is the development server. You do not need it for everyday use.
 
 ## What it does
 
